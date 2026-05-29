@@ -38,3 +38,15 @@ next-env.d.ts
 .agents/
 .bin/
 .gemini/
+
+# VS Code and Intellisense files
+.vscode/
+*.vc.db
+*.vc.db-journal
+
+# Package manager lock files
+package-lock.json
+
+# Temporary/Scratch database files
+tables.sql
+
