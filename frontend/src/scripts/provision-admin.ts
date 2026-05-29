@@ -1,5 +1,4 @@
 import { createClient } from '@supabase/supabase-js'
-import ws from 'ws'
 import * as fs from 'fs'
 import * as path from 'path'
 
@@ -23,9 +22,6 @@ const supabase = createClient(
     auth: {
       autoRefreshToken: false,
       persistSession: false
-    },
-    realtime: {
-      transport: ws
     }
   }
 )

@@ -38,11 +38,11 @@ else
     git remote add origin "$REMOTE_URL"
 fi
 
-# Commit any pending changes (e.g., package.json devDependencies fix)
+# Commit any pending changes (e.g., package.json and script updates)
 if [ -n "$(git status --porcelain)" ]; then
     echo "--> Detected uncommitted changes. Committing them..."
     git add -A
-    git commit -m "fix: add missing @types/ws dependency"
+    git commit -m "fix: remove unused ws dependency to resolve type check errors"
 fi
 
 # Push main branch to the new remote
