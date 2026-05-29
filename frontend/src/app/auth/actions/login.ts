@@ -35,8 +35,10 @@ export async function login(input: FormData | { email: string; password: string 
 
     if (profile?.role === 'admin') {
       redirect('/admin/dashboard')
-    } else {
+    } else if (profile?.role === 'employee') {
       redirect('/employee/dashboard')
+    } else {
+      return { error: 'User profile or role not found. Please contact an administrator.' }
     }
   }
 

@@ -38,7 +38,7 @@ async function provision() {
       email,
       password,
       email_confirm: true,
-      user_metadata: { role: 'admin' }
+      user_metadata: { name: 'Parth Harmalkar', role: 'admin', employee_id: 'ADMIN-001' }
     })
     if (error) throw error
     user = data.user
