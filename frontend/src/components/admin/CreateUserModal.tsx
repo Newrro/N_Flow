@@ -100,7 +100,7 @@ export function CreateUserModal({ isOpen, onClose, onSuccess }: CreateUserModalP
               </div>
 
               <div>
-                <label className={labelClass}>Corporate Email</label>
+                <label className={labelClass}>Email Address</label>
                 <div className="relative">
                   <Mail className="pointer-events-none absolute left-3.5 top-1/2 h-4 w-4 -translate-y-1/2 text-[var(--foreground-subtle)]" />
                   <input

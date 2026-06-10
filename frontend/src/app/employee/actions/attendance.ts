@@ -4,7 +4,7 @@ import { createClient } from '@/utils/supabase/server'
 import { revalidatePath } from 'next/cache'
 import { format } from 'date-fns'
 
-export async function recordLogin() {
+export async function recordLogin(remarks?: string) {
   const supabase = await createClient()
   const { data: { user } } = await supabase.auth.getUser()
   if (!user) return { error: 'Not authenticated' }
@@ -19,6 +19,7 @@ export async function recordLogin() {
       date: today,
       login_time: now,
       status: 'present',
+      remarks: remarks || null,
       updated_at: now
     }, { onConflict: 'user_id,date' })
 

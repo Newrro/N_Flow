@@ -20,7 +20,7 @@ export default async function EmployeeLayout({
     .eq("id", user.id)
     .single();
 
-  if (!profile || profile.role !== "employee") {
+  if (!profile || (profile.role !== "employee" && profile.role !== "admin")) {
     redirect("/login");
   }
 
@@ -28,7 +28,7 @@ export default async function EmployeeLayout({
     <DashboardLayout
       user={{
         name: profile.name,
-        role: "employee",
+        role: profile.role as 'admin' | 'employee',
         email: user.email || "",
       }}
     >

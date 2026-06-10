@@ -23,14 +23,29 @@ const supabase = createClient(
 )
 
 async function provision() {
-  const email = 'parthharmalkar738@gmail.com'
-  const password = 'Parth@1609'
+  const email = 'Amaarajas@gmail.com'
+  const password = '#Ammu7861*'
   
-  console.log(`Checking if ${email} already exists in auth.users...`)
+  console.log('Fetching existing users...')
   const { data: users, error: listError } = await supabase.auth.admin.listUsers()
   if (listError) throw listError
   
-  let user = users.users.find(u => u.email === email)
+  // Delete the old admin users if they exist to avoid unique constraint violations on employee_id
+  const oldEmails = ['parthharmalkar738@gmail.com', 'Amaarajas@gmailo.com']
+  for (const oldEmail of oldEmails) {
+    const oldUser = users.users.find(u => u.email?.toLowerCase() === oldEmail.toLowerCase())
+    if (oldUser) {
+      console.log(`Deleting old admin user ${oldEmail}...`)
+      const { error: deleteError } = await supabase.auth.admin.deleteUser(oldUser.id)
+      if (deleteError) {
+        console.warn(`Warning: failed to delete old admin: ${deleteError.message}`)
+      } else {
+        console.log(`Old admin (${oldEmail}) deleted successfully.`)
+      }
+    }
+  }
+
+  let user = users.users.find(u => u.email?.toLowerCase() === email.toLowerCase())
   
   if (!user) {
     console.log('Creating auth account...')
@@ -38,7 +53,7 @@ async function provision() {
       email,
       password,
       email_confirm: true,
-      user_metadata: { name: 'Parth Harmalkar', role: 'admin', employee_id: 'ADMIN-001' }
+      user_metadata: { name: 'Ammaarah', role: 'admin', employee_id: 'ADMIN-001' }
     })
     if (error) throw error
     user = data.user
@@ -52,7 +67,7 @@ async function provision() {
     .from('profiles')
     .upsert({
       id: user.id,
-      name: 'Parth Harmalkar',
+      name: 'Ammaarah',
       role: 'admin',
       employee_id: 'ADMIN-001'
     }, { onConflict: 'id' })

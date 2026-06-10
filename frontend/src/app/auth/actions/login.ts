@@ -34,7 +34,7 @@ export async function login(input: FormData | { email: string; password: string 
       .single()
 
     if (profile?.role === 'admin') {
-      redirect('/admin/dashboard')
+      redirect('/admin/choose')
     } else if (profile?.role === 'employee') {
       redirect('/employee/dashboard')
     } else {

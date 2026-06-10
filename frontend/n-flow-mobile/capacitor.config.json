@@ -1,0 +1,14 @@
+{
+  "appId": "com.newrro.nflow",
+  "appName": "N-Flow",
+  "webDir": "www",
+  "server": {
+    "url": "http://172.17.40.218:3000",
+    "cleartext": true,
+    "allowNavigation": [
+      "172.17.40.218:3000",
+      "172.17.40.218",
+      "*.supabase.co"
+    ]
+  }
+}

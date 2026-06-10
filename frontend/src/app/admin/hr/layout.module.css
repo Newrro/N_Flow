@@ -1,0 +1,226 @@
+.wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  background: var(--surface-1);
+  border-right: 1px solid var(--surface-border);
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  z-index: 100;
+  transition: transform var(--transition-slow);
+}
+
+.sidebarLogo {
+  padding: var(--space-4) var(--space-6);
+  border-bottom: 1px solid var(--color-gray-200);
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.logoImage {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.logoTitle {
+  font-size: var(--text-lg);
+  font-weight: var(--font-bold);
+  color: var(--color-primary-700);
+  margin: 0;
+}
+
+.logoSubtitle {
+  font-size: var(--text-sm);
+  font-weight: var(--font-bold);
+  letter-spacing: 0.05em;
+  margin: 0;
+  background: linear-gradient(135deg, #7B2D8E, #E91E8C);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.sidebarNav {
+  flex: 1;
+  padding: var(--space-4) var(--space-3);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  color: var(--color-gray-600);
+  font-size: var(--text-sm);
+  font-weight: var(--font-medium);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+  border: none;
+  background: none;
+  width: 100%;
+  cursor: pointer;
+  text-align: left;
+}
+
+.navItem:hover {
+  background: var(--color-gray-100);
+  color: var(--color-gray-800);
+}
+
+.navItemActive {
+  background: var(--color-primary-50);
+  color: var(--color-primary-700);
+  font-weight: var(--font-semibold);
+}
+
+.navIcon {
+  font-size: var(--text-lg);
+  width: 24px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.sidebarFooter {
+  padding: var(--space-4) var(--space-3);
+  border-top: 1px solid var(--color-gray-200);
+}
+
+.logoutButton {
+  composes: navItem;
+  color: var(--color-danger-600);
+}
+
+.logoutButton:hover {
+  background: var(--color-danger-50);
+  color: var(--color-danger-700);
+}
+
+.main {
+  flex: 1;
+  margin-left: var(--sidebar-width);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.header {
+  height: var(--header-height);
+  background: var(--surface-1);
+  border-bottom: 1px solid var(--surface-border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--space-6);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+
+.headerTitle {
+  font-size: var(--text-lg);
+  font-weight: var(--font-semibold);
+  color: var(--color-gray-800);
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.userBadge {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-size: var(--text-sm);
+  color: var(--color-gray-600);
+}
+
+.userAvatar {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-full);
+  background: var(--color-primary-100);
+  color: var(--color-primary-700);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--text-xs);
+  font-weight: var(--font-bold);
+}
+
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: var(--text-xl);
+  color: var(--color-gray-600);
+  padding: var(--space-2);
+  cursor: pointer;
+}
+
+.content {
+  flex: 1;
+  padding: var(--space-6);
+  max-width: var(--max-content-width);
+  width: 100%;
+  margin: 0 auto;
+}
+
+.overlay {
+  display: none;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebarOpen {
+    transform: translateX(0);
+  }
+
+  .overlay {
+    display: block;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 99;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--transition-slow);
+  }
+
+  .overlayVisible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .main {
+    margin-left: 0;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .content {
+    padding: var(--space-4);
+  }
+}

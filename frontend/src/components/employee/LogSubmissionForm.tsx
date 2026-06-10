@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import { Upload, X, CheckCircle2, Loader2, Camera } from 'lucide-react';
 import { createClient } from '@/utils/supabase/client';
 import { submitWorkLog, getAssignedTasks } from '@/app/employee/actions/logs';
+import { useSearchParams } from 'next/navigation';
 
 interface LogSubmissionFormProps {
   onSuccess?: () => void;
@@ -20,9 +21,20 @@ export default function LogSubmissionForm({ onSuccess }: LogSubmissionFormProps)
     description: '',
   });
 
+  const searchParams = useSearchParams();
+  const taskParam = searchParams.get('task');
+
   useEffect(() => {
-    getAssignedTasks().then(setTasks).catch(console.error);
-  }, []);
+    getAssignedTasks().then((fetchedTasks) => {
+      setTasks(fetchedTasks);
+      if (taskParam) {
+        setFormData((prev) => ({
+          ...prev,
+          task_id: taskParam
+        }));
+      }
+    }).catch(console.error);
+  }, [taskParam]);
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files?.[0]) setFile(e.target.files[0]);

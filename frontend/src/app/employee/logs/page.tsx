@@ -1,6 +1,6 @@
 "use client";
 
-import React from "react";
+import React, { Suspense } from "react";
 import { Container } from "@/components/ui/Container";
 import LogSubmissionForm from "@/components/employee/LogSubmissionForm";
 import { Camera, FileCheck, History } from "lucide-react";
@@ -37,7 +37,15 @@ export default function EmployeeLogsPage() {
             <p className="text-sm text-[var(--foreground-muted)]">Complete all required fields before commit.</p>
           </div>
           <div className="p-6 md:p-8">
-            <LogSubmissionForm />
+            <Suspense fallback={
+              <div className="space-y-4 animate-pulse">
+                <div className="h-10 bg-[var(--surface-3)] rounded" />
+                <div className="h-10 bg-[var(--surface-3)] rounded" />
+                <div className="h-24 bg-[var(--surface-3)] rounded" />
+              </div>
+            }>
+              <LogSubmissionForm />
+            </Suspense>
           </div>
         </div>
       </div>

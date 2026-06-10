@@ -1,0 +1,185 @@
+.container {
+  padding: var(--space-6);
+  max-width: 1800px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--color-gray-500);
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+}
+
+/* Split View */
+.splitView {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-6);
+}
+
+@media (max-width: 1200px) {
+  .splitView {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Form Panel */
+.formPanel {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.section {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-800);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+@media (max-width: 640px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  margin-bottom: var(--space-3);
+  font-weight: var(--font-weight-medium);
+}
+
+.checkboxLabel input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary-500);
+}
+
+/* Editor */
+.editorToolbar {
+  display: flex;
+  gap: var(--space-1);
+  margin-bottom: var(--space-2);
+  padding: var(--space-2);
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-sm);
+}
+
+.editorToolbar button {
+  padding: var(--space-1) var(--space-2);
+  border: 1px solid var(--surface-border);
+  background-color: var(--surface-2);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  font-weight: var(--font-weight-bold);
+  min-width: 32px;
+}
+
+.editorToolbar button:hover {
+  background-color: var(--color-gray-100);
+}
+
+.editorWrapper {
+  border: 1px solid var(--color-gray-300);
+  border-radius: var(--radius-md);
+  min-height: 120px;
+}
+
+.editorWrapper :global(.ProseMirror) {
+  padding: var(--space-3);
+  min-height: 100px;
+  outline: none;
+}
+
+.editorWrapper :global(.ProseMirror) p {
+  margin: 0 0 var(--space-2) 0;
+}
+
+.editorWrapper :global(.ProseMirror) ul {
+  padding-left: var(--space-4);
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  padding-top: var(--space-4);
+}
+
+/* Preview Panel */
+.previewPanel {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: sticky;
+  top: var(--space-4);
+  max-height: calc(100vh - 150px);
+  display: flex;
+  flex-direction: column;
+}
+
+.previewTitle {
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-800);
+  padding: var(--space-3) var(--space-4);
+  border-bottom: 1px solid var(--color-gray-200);
+  margin: 0;
+  background-color: var(--color-gray-50);
+}
+
+.preview {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-4);
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+}
+
+.preview h1 {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--space-4);
+}
+
+.preview p {
+  margin-bottom: var(--space-2);
+}
+
+.preview ul {
+  padding-left: var(--space-5);
+  margin-bottom: var(--space-2);
+}
+
+.preview hr {
+  margin: var(--space-4) 0;
+  border: none;
+  border-top: 1px solid var(--color-gray-300);
+}

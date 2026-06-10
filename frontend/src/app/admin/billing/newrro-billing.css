@@ -1,0 +1,260 @@
+/* ============================================================
+   NEWRRO — "Aurora Pulse" theme
+   Deep black canvas · neon-violet particle-wave glow
+   · glassy surfaces · glowing pill buttons · live motion
+   ============================================================ */@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Hanken+Grotesk:wght@300;400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap');
+
+
+
+:root {
+  /* Canvas */
+  --bg-base: #050208;
+  --bg-surface: #0b0712;
+  --bg-elevated: #150d22;
+  --bg-card: #0f0a1a;
+  --bg-hover: #1d1330;
+
+  /* Hairlines */
+  --border: rgba(167, 121, 255, 0.16);
+  --border-subtle: rgba(167, 121, 255, 0.08);
+  --border-strong: rgba(167, 121, 255, 0.32);
+
+  /* Neon violet family (from the wave) */
+  --accent: #8b5cf6;
+  --accent-strong: #b794ff;
+  --accent-dim: #6d3df5;
+  --accent-glow: #a779ff;
+  --accent-bright: #c8a6ff;
+  --magenta: #c06bff;
+  --steel: #9d7bff;
+  --steel-dim: #7c5cf0;
+
+  /* Legacy aliases remapped onto the violet palette */
+  --accent-purple: #8b5cf6;
+  --accent-purple-dim: #6d3df5;
+  --accent-violet: #b794ff;
+  --accent-pink: #c06bff;
+  --accent-cyan: #9d7bff;
+  --accent-teal: #9d7bff;
+
+  /* Status */
+  --accent-green: #5fe3b0;
+  --accent-amber: #ffc266;
+  --accent-red: #ff6f8b;
+
+  /* Text */
+  --text-primary: #f3effb;
+  --text-secondary: #b3a7cc;
+  --text-muted: #7c7196;
+  --text-muted2: #756a8f;
+
+  /* Geometry */
+  --sidebar-width: 234px;
+  --radius: 16px;
+  --radius-sm: 11px;
+  --radius-lg: 22px;
+  --pill: 999px;
+
+  /* Motion */
+  --ease-spring: cubic-bezier(0.16, 0.84, 0.44, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --font-display: 'Sora', system-ui, sans-serif;
+  --font-body: 'Hanken Grotesk', -apple-system, system-ui, sans-serif;
+  --font-mono: 'Geist Mono', ui-monospace, 'SF Mono', monospace;
+}.newrro-billing-theme * { margin: 0; padding: 0; box-sizing: border-box; }.newrro-billing-theme, .newrro-billing-theme, .newrro-billing-theme {
+  height: 100%;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}/* ===== Living aurora background: the wave image + drifting violet light ===== */.newrro-billing-theme::before {
+  content: '';
+  position: fixed;
+  inset: -10%;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(40% 38% at 50% 52%, rgba(139, 92, 246, 0.22), transparent 70%),
+    radial-gradient(60% 45% at 50% 50%, rgba(109, 61, 245, 0.12), transparent 75%),
+    url('/wave-bg.png');
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: center, center, center;
+  background-size: cover, cover, 120% auto;
+  opacity: 0.9;
+  filter: saturate(118%);
+  animation: auroraFlow 24s ease-in-out infinite alternate;
+}/* subtle second wave layer for parallax depth + a moving sheen */.newrro-billing-theme::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(70% 50% at 50% 50%, transparent 30%, var(--bg-base) 88%),
+    repeating-linear-gradient(115deg, transparent 0 22px, rgba(167,121,255,0.012) 22px 23px);
+  animation: sheenSlide 18s linear infinite;
+}@keyframes auroraFlow {
+  0%   { transform: translate3d(0,0,0) scale(1.02); background-position-x: 48%, 52%, 47%; }
+  50%  { transform: translate3d(-1.5%, 1%, 0) scale(1.06); background-position-x: 52%, 48%, 53%; }
+  100% { transform: translate3d(1.5%, -1%, 0) scale(1.04); background-position-x: 49%, 51%, 50%; }
+}@keyframes sheenSlide {
+  0% { background-position: center, 0 0; }
+  100% { background-position: center, 600px 0; }
+}.newrro-billing-theme h1, .newrro-billing-theme h2, .newrro-billing-theme h3, .newrro-billing-theme h4, .newrro-billing-theme h5 { font-family: var(--font-display); font-weight: 700; letter-spacing: -0.02em; }.newrro-billing-theme ::-webkit-scrollbar { width: 6px; height: 6px; }.newrro-billing-theme ::-webkit-scrollbar-track { background: transparent; }.newrro-billing-theme ::-webkit-scrollbar-thumb { background: rgba(167,121,255,0.25); border-radius: 99px; }.newrro-billing-theme ::-webkit-scrollbar-thumb:hover { background: rgba(167,121,255,0.45); }.newrro-billing-theme input, .newrro-billing-theme select, .newrro-billing-theme textarea { font-family: var(--font-body); font-size: 14px; }.newrro-billing-theme button { cursor: pointer; font-family: var(--font-body); }.newrro-billing-theme .fw-700, .newrro-billing-theme .stat-value, .newrro-billing-theme .margin-pill { font-feature-settings: 'tnum' 1; }/* ===================== Layout ===================== */.newrro-billing-theme .app-layout { display: flex; height: 100vh; overflow: hidden; position: relative; z-index: 1; }.newrro-billing-theme .main-content { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: transparent; }.newrro-billing-theme .page-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 28px 32px 48px;
+}/* ===== Unique per-page transitions (keyed wrapper in App.jsx) ===== */.newrro-billing-theme .view-enter { will-change: transform, opacity, filter; }.newrro-billing-theme .view-dashboard { animation: vDash 0.55s var(--ease-spring) both; }.newrro-billing-theme .view-invoices { animation: vSlideR 0.5s var(--ease-spring) both; }.newrro-billing-theme .view-expenses { animation: vSlideUp 0.5s var(--ease-spring) both; }.newrro-billing-theme .view-vendors { animation: vSlideL 0.5s var(--ease-spring) both; }.newrro-billing-theme .view-pnl { animation: vBlur 0.6s var(--ease-out) both; }.newrro-billing-theme .view-settings { animation: vFade 0.5s var(--ease-out) both; }@keyframes vDash { from { opacity: 0; transform: scale(0.97) translateY(14px); } to { opacity: 1; transform: none; } }@keyframes vSlideR { from { opacity: 0; transform: translateX(48px); } to { opacity: 1; transform: none; } }@keyframes vSlideL { from { opacity: 0; transform: translateX(-48px); } to { opacity: 1; transform: none; } }@keyframes vSlideUp { from { opacity: 0; transform: translateY(46px); } to { opacity: 1; transform: none; } }@keyframes vBlur { from { opacity: 0; filter: blur(12px); transform: scale(1.02); } to { opacity: 1; filter: blur(0); transform: none; } }@keyframes vFade { from { opacity: 0; } to { opacity: 1; } }/* stagger inner blocks */.newrro-billing-theme .page-body > * { animation: blockRise 0.55s var(--ease-spring) both; }.newrro-billing-theme .page-body > *:nth-child(1) { animation-delay: 0.04s; }.newrro-billing-theme .page-body > *:nth-child(2) { animation-delay: 0.10s; }.newrro-billing-theme .page-body > *:nth-child(3) { animation-delay: 0.16s; }.newrro-billing-theme .page-body > *:nth-child(4) { animation-delay: 0.22s; }@keyframes blockRise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }/* ===================== Sidebar ===================== */.newrro-billing-theme .sidebar {
+  width: var(--sidebar-width);
+  background: linear-gradient(180deg, rgba(167,121,255,0.06), rgba(11,7,18,0.85) 38%);
+  border-right: 1px solid var(--border-subtle);
+  display: flex; flex-direction: column;
+  padding: 22px 16px 18px;
+  position: relative; z-index: 2;
+  backdrop-filter: blur(18px);
+}.newrro-billing-theme .sidebar-logo { padding: 4px 8px 22px; }.newrro-billing-theme .sidebar-logo h2 {
+  font-size: 17px; font-weight: 800; letter-spacing: -0.03em;
+  display: flex; align-items: center; gap: 8px;
+}.newrro-billing-theme .sidebar-logo h2::before {
+  content: '';
+  width: 22px; height: 22px; border-radius: 7px;
+  background: radial-gradient(circle at 35% 30%, var(--accent-bright), var(--accent) 55%, var(--accent-dim));
+  box-shadow: 0 0 18px rgba(139,92,246,0.7), inset 0 1px 1px rgba(255,255,255,0.4);
+  flex-shrink: 0;
+}.newrro-billing-theme .sidebar-logo p { font-size: 11px; color: var(--text-muted2); margin-top: 4px; letter-spacing: 0.05em; }.newrro-billing-theme .sidebar-section-label {
+  font-size: 10px; font-weight: 600; letter-spacing: 0.16em;
+  color: var(--text-muted2); padding: 18px 10px 8px; text-transform: uppercase;
+}.newrro-billing-theme .sidebar-nav-item {
+  display: flex; align-items: center; gap: 11px;
+  padding: 10px 12px; border-radius: var(--radius-sm);
+  color: var(--text-secondary); font-size: 13.5px; font-weight: 500;
+  cursor: pointer; position: relative;
+  transition: color 0.25s var(--ease-out), background 0.25s var(--ease-out);
+}.newrro-billing-theme .sidebar-nav-item::before {
+  content: ''; position: absolute; left: 0; top: 50%;
+  transform: translateY(-50%) scaleY(0);
+  width: 3px; height: 62%; border-radius: 99px;
+  background: linear-gradient(180deg, var(--accent-bright), var(--accent-dim));
+  box-shadow: 0 0 10px var(--accent);
+  transition: transform 0.3s var(--ease-spring);
+}.newrro-billing-theme .sidebar-nav-item:hover { color: var(--text-primary); background: rgba(167,121,255,0.07); }.newrro-billing-theme .sidebar-nav-item.active {
+  color: var(--text-primary);
+  background: linear-gradient(90deg, rgba(139,92,246,0.2), rgba(139,92,246,0.02));
+}.newrro-billing-theme .sidebar-nav-item.active::before { transform: translateY(-50%) scaleY(1); }.newrro-billing-theme .sidebar-bottom { margin-top: auto; padding-top: 14px; border-top: 1px solid var(--border-subtle); }.newrro-billing-theme .upgrade-btn {
+  width: 100%; display: flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px; border-radius: var(--pill);
+  background: transparent; border: 1px solid var(--border);
+  color: var(--text-secondary); font-size: 12.5px; font-weight: 600;
+  transition: all 0.25s var(--ease-out);
+}.newrro-billing-theme .upgrade-btn:hover { border-color: var(--accent); color: var(--accent-strong); background: rgba(139,92,246,0.08); box-shadow: 0 0 18px rgba(139,92,246,0.18); }/* ===================== Topbar ===================== */.newrro-billing-theme .topbar {
+  display: flex; align-items: center; gap: 18px;
+  padding: 18px 32px;
+  border-bottom: 1px solid var(--border-subtle);
+  background: linear-gradient(180deg, rgba(11,7,18,0.75), rgba(11,7,18,0.4));
+  backdrop-filter: blur(18px);
+  position: relative; z-index: 2;
+}.newrro-billing-theme .topbar-search {
+  display: flex; align-items: center; gap: 9px;
+  flex: 1; max-width: 420px; padding: 9px 15px;
+  background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+  border-radius: var(--pill); color: var(--text-muted2);
+  transition: border-color 0.25s var(--ease-out), box-shadow 0.25s var(--ease-out);
+}.newrro-billing-theme .topbar-search:focus-within { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(139,92,246,0.14); }.newrro-billing-theme .topbar-search input { flex: 1; background: transparent; border: none; outline: none; color: var(--text-primary); font-size: 13px; }.newrro-billing-theme .topbar-search input::placeholder { color: var(--text-muted2); }.newrro-billing-theme .topbar-right { display: flex; align-items: center; gap: 12px; margin-left: auto; }.newrro-billing-theme .year-selector {
+  padding: 8px 14px; background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+  border-radius: var(--pill); color: var(--text-secondary); font-size: 12.5px; font-weight: 500;
+  outline: none; transition: border-color 0.2s var(--ease-out);
+}.newrro-billing-theme .year-selector:hover { border-color: var(--accent); }.newrro-billing-theme .notif-btn {
+  position: relative; width: 38px; height: 38px; border-radius: var(--pill);
+  background: var(--bg-elevated); border: 1px solid var(--border-subtle);
+  color: var(--text-secondary); display: flex; align-items: center; justify-content: center;
+  transition: all 0.25s var(--ease-out);
+}.newrro-billing-theme .notif-btn:hover { color: var(--accent-strong); border-color: var(--accent); }.newrro-billing-theme .notif-dot { position: absolute; top: 9px; right: 10px; width: 7px; height: 7px; border-radius: 99px; background: var(--accent-bright); box-shadow: 0 0 10px var(--accent); }.newrro-billing-theme .avatar-btn {
+  width: 38px; height: 38px; border-radius: var(--pill);
+  background: radial-gradient(circle at 35% 30%, var(--accent-bright), var(--accent) 55%, var(--accent-dim));
+  color: #fff; font-weight: 800; font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: inset 0 1px 1px rgba(255,255,255,0.4), 0 4px 18px rgba(139,92,246,0.4);
+}/* ===================== Buttons ===================== */.newrro-billing-theme .btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  padding: 10px 18px; border-radius: var(--pill);
+  font-size: 13.5px; font-weight: 600; border: 1px solid transparent;
+  letter-spacing: -0.01em; position: relative; overflow: hidden;
+  transition: transform 0.25s var(--ease-spring), box-shadow 0.3s var(--ease-out), background 0.25s var(--ease-out), border-color 0.25s var(--ease-out), color 0.25s var(--ease-out);
+}.newrro-billing-theme .btn:active { transform: scale(0.97); }/* primary = glowing violet gradient pill with travelling sheen */.newrro-billing-theme .btn-primary {
+  background: linear-gradient(120deg, var(--accent-dim), var(--accent) 55%, var(--magenta));
+  background-size: 180% 180%;
+  color: #fff;
+  box-shadow: 0 6px 24px rgba(139,92,246,0.4), inset 0 1px 1px rgba(255,255,255,0.25);
+  animation: hueShift 8s ease-in-out infinite alternate;
+}@keyframes hueShift { 0% { background-position: 0% 50%; } 100% { background-position: 100% 50%; } }.newrro-billing-theme .btn-primary::after {
+  content: ''; position: absolute; inset: 0;
+  background: linear-gradient(115deg, transparent 30%, rgba(255,255,255,0.5) 48%, transparent 66%);
+  transform: translateX(-130%); transition: transform 0.7s var(--ease-out);
+}.newrro-billing-theme .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(139,92,246,0.55), inset 0 1px 1px rgba(255,255,255,0.3); }.newrro-billing-theme .btn-primary:hover::after { transform: translateX(130%); }.newrro-billing-theme .btn-secondary { background: rgba(167,121,255,0.07); border-color: var(--border); color: var(--text-primary); }.newrro-billing-theme .btn-secondary:hover { background: rgba(167,121,255,0.14); border-color: var(--accent); transform: translateY(-1px); box-shadow: 0 0 20px rgba(139,92,246,0.18); }.newrro-billing-theme .btn-danger { background: rgba(255,111,139,0.14); border-color: rgba(255,111,139,0.4); color: var(--accent-red); }.newrro-billing-theme .btn-danger:hover { background: rgba(255,111,139,0.22); }.newrro-billing-theme .btn-ghost { background: transparent; color: var(--text-secondary); }.newrro-billing-theme .btn-ghost:hover { color: var(--accent-strong); background: rgba(167,121,255,0.08); }.newrro-billing-theme .btn-icon { padding: 8px; width: 34px; height: 34px; border-radius: var(--radius-sm); }.newrro-billing-theme .btn-sm { padding: 7px 13px; font-size: 12.5px; }/* ===================== Cards ===================== */.newrro-billing-theme .card {
+  background: linear-gradient(180deg, rgba(167,121,255,0.05), transparent 60%), var(--bg-card);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius);
+  padding: 20px 22px; position: relative; overflow: hidden;
+  transition: transform 0.35s var(--ease-spring), border-color 0.3s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}.newrro-billing-theme .card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(183,148,255,0.5), transparent);
+  opacity: 0; transition: opacity 0.4s var(--ease-out);
+}.newrro-billing-theme .card:hover { border-color: var(--border); box-shadow: 0 18px 44px rgba(20,5,40,0.6), 0 0 30px rgba(139,92,246,0.1); }.newrro-billing-theme .card:hover::before { opacity: 1; }.newrro-billing-theme .card-sm { padding: 14px 16px; }.newrro-billing-theme .section-title { font-size: 14px; font-weight: 700; letter-spacing: -0.01em; font-family: var(--font-display); }.newrro-billing-theme .page-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 24px; }.newrro-billing-theme .page-header h1 { font-size: 27px; font-weight: 800; letter-spacing: -0.035em; }.newrro-billing-theme .page-header p { color: var(--text-secondary); font-size: 13px; margin-top: 5px; }/* ===================== Stat cards ===================== */.newrro-billing-theme .stat-card {
+  background: linear-gradient(180deg, rgba(167,121,255,0.06), transparent 55%), var(--bg-card);
+  border: 1px solid var(--border-subtle); border-radius: var(--radius);
+  padding: 18px 20px; position: relative; overflow: hidden;
+  transition: transform 0.35s var(--ease-spring), border-color 0.3s var(--ease-out), box-shadow 0.35s var(--ease-out);
+}.newrro-billing-theme .stat-card:hover { transform: translateY(-3px); border-color: var(--border); box-shadow: 0 20px 48px rgba(20,5,40,0.6), 0 0 30px rgba(139,92,246,0.12); }.newrro-billing-theme .stat-card-glow { position: absolute; top: -40px; right: -30px; width: 130px; height: 130px; border-radius: 50%; opacity: 0.25; filter: blur(38px); pointer-events: none; }.newrro-billing-theme .stat-label { font-size: 12px; color: var(--text-muted2); font-weight: 500; }.newrro-billing-theme .stat-value { font-size: 25px; font-weight: 800; letter-spacing: -0.03em; margin-top: 7px; font-family: var(--font-display); font-feature-settings: 'tnum' 1; }.newrro-billing-theme .stat-change { font-size: 11.5px; margin-top: 6px; display: inline-flex; align-items: center; gap: 4px; }.newrro-billing-theme .change-up { color: var(--accent-green); }.newrro-billing-theme .change-down { color: var(--accent-red); }.newrro-billing-theme .change-neutral { color: var(--text-muted2); }/* ===================== Grids ===================== */.newrro-billing-theme .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }.newrro-billing-theme .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }.newrro-billing-theme .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }.newrro-billing-theme .grid-1-2 { display: grid; grid-template-columns: 1fr 2fr; gap: 16px; }.newrro-billing-theme .grid-2-1 { display: grid; grid-template-columns: 2fr 1fr; gap: 16px; }@media (max-width: 1100px) { .grid-4 { grid-template-columns: repeat(2, 1fr); } .grid-3 { grid-template-columns: 1fr 1fr; } }@media (max-width: 720px) { .grid-4, .grid-3, .grid-2 { grid-template-columns: 1fr; } }/* ===================== Tables ===================== */.newrro-billing-theme .table-wrap { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); overflow: hidden; }.newrro-billing-theme table { width: 100%; border-collapse: collapse; }.newrro-billing-theme thead th {
+  text-align: left; font-size: 10.5px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--text-muted2); padding: 14px 16px; border-bottom: 1px solid var(--border-subtle);
+  background: rgba(167,121,255,0.04); white-space: nowrap;
+}.newrro-billing-theme tbody td { padding: 14px 16px; border-bottom: 1px solid var(--border-subtle); font-size: 13.5px; }.newrro-billing-theme tbody tr { transition: background 0.2s var(--ease-out); }.newrro-billing-theme tbody tr:last-child td { border-bottom: none; }.newrro-billing-theme tbody tr:hover { background: rgba(167,121,255,0.05); }/* ===================== Badges ===================== */.newrro-billing-theme .badge { display: inline-flex; align-items: center; gap: 5px; padding: 4px 11px; border-radius: var(--pill); font-size: 11.5px; font-weight: 600; text-transform: capitalize; }.newrro-billing-theme .badge-oem { background: rgba(139,92,246,0.16); color: var(--accent-strong); border: 1px solid rgba(139,92,246,0.34); }.newrro-billing-theme .badge-procurement { background: rgba(157,123,255,0.14); color: var(--steel); border: 1px solid rgba(157,123,255,0.3); }.newrro-billing-theme .badge-service { background: rgba(192,107,255,0.14); color: var(--magenta); border: 1px solid rgba(192,107,255,0.3); }.newrro-billing-theme .badge-paid { background: rgba(95,227,176,0.13); color: var(--accent-green); border: 1px solid rgba(95,227,176,0.3); }.newrro-billing-theme .badge-pending { background: rgba(255,194,102,0.13); color: var(--accent-amber); border: 1px solid rgba(255,194,102,0.3); }.newrro-billing-theme .badge-draft { background: rgba(255,255,255,0.06); color: var(--text-secondary); border: 1px solid var(--border); }.newrro-billing-theme .badge-supplier { background: rgba(255,194,102,0.13); color: var(--accent-amber); border: 1px solid rgba(255,194,102,0.3); }.newrro-billing-theme .badge-customer { background: rgba(139,92,246,0.16); color: var(--accent-strong); border: 1px solid rgba(139,92,246,0.34); }.newrro-billing-theme .badge-both { background: rgba(95,227,176,0.13); color: var(--accent-green); border: 1px solid rgba(95,227,176,0.3); }.newrro-billing-theme .margin-pill {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-width: 54px; padding: 4px 13px; border-radius: var(--pill);
+  font-weight: 700; font-size: 12.5px; font-family: var(--font-mono);
+  color: var(--accent-green); background: rgba(95,227,176,0.1); border: 1px solid rgba(95,227,176,0.28);
+}/* ===================== Status / record-payment ===================== */.newrro-billing-theme .status-cell { display: flex; flex-direction: column; align-items: flex-start; gap: 3px; }.newrro-billing-theme .status-row { display: flex; align-items: center; gap: 8px; }.newrro-billing-theme .status-sub { font-size: 10.5px; color: var(--accent-amber); }.newrro-billing-theme .record-pay-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 28px; height: 28px; border-radius: 9px;
+  background: rgba(139,92,246,0.16); border: 1px solid rgba(139,92,246,0.36);
+  color: var(--accent-strong); transition: all 0.25s var(--ease-spring);
+}.newrro-billing-theme .record-pay-btn:hover { background: rgba(139,92,246,0.3); transform: translateY(-1px) rotate(-15deg); box-shadow: 0 0 16px rgba(139,92,246,0.4); }.newrro-billing-theme .mode-chip {
+  display: inline-flex; align-items: center; padding: 4px 12px; border-radius: var(--pill);
+  font-size: 11.5px; font-weight: 600; background: rgba(157,123,255,0.12); color: var(--steel); border: 1px solid rgba(157,123,255,0.28);
+}.newrro-billing-theme .pay-type-grid { display: flex; flex-wrap: wrap; gap: 9px; }.newrro-billing-theme .pay-type-chip {
+  padding: 9px 17px; border-radius: var(--pill); font-size: 13px; font-weight: 600;
+  background: var(--bg-elevated); border: 1px solid var(--border); color: var(--text-secondary);
+  display: inline-flex; align-items: center; gap: 6px; transition: all 0.22s var(--ease-out);
+}.newrro-billing-theme .pay-type-chip:hover { border-color: var(--accent); color: var(--text-primary); transform: translateY(-1px); }.newrro-billing-theme .pay-type-chip.active { background: rgba(139,92,246,0.2); border-color: var(--accent); color: var(--accent-strong); box-shadow: 0 0 18px rgba(139,92,246,0.25); }.newrro-billing-theme .record-pay-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--border-subtle); }.newrro-billing-theme .record-pay-balance {
+  background: linear-gradient(135deg, rgba(139,92,246,0.16), rgba(192,107,255,0.06));
+  border: 1px solid rgba(139,92,246,0.26); border-radius: var(--radius-sm);
+  padding: 16px 18px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;
+}/* ===================== Filters / tabs ===================== */.newrro-billing-theme .filter-bar { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; margin-bottom: 20px; }.newrro-billing-theme .filter-chip { padding: 7px 15px; border-radius: var(--pill); background: var(--bg-elevated); border: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 12.5px; font-weight: 500; transition: all 0.22s var(--ease-out); }.newrro-billing-theme .filter-chip:hover { border-color: var(--accent); color: var(--text-primary); }.newrro-billing-theme .filter-chip.active { background: linear-gradient(120deg, var(--accent-dim), var(--accent)); color: #fff; border-color: transparent; box-shadow: 0 4px 18px rgba(139,92,246,0.35); }.newrro-billing-theme .tabs { display: flex; gap: 4px; border-bottom: 1px solid var(--border-subtle); margin-bottom: 20px; }.newrro-billing-theme .tab-btn { padding: 10px 16px; background: transparent; border: none; color: var(--text-secondary); font-size: 13.5px; font-weight: 500; border-bottom: 2px solid transparent; margin-bottom: -1px; transition: color 0.2s var(--ease-out), border-color 0.2s var(--ease-out); }.newrro-billing-theme .tab-btn:hover { color: var(--text-primary); }.newrro-billing-theme .tab-btn.active { color: var(--accent-strong); border-bottom-color: var(--accent); }/* ===================== Forms ===================== */.newrro-billing-theme .form-group { margin-bottom: 16px; }.newrro-billing-theme .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }.newrro-billing-theme .form-row-3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 12px; }.newrro-billing-theme .form-label { display: block; font-size: 12px; font-weight: 600; color: var(--text-secondary); margin-bottom: 7px; }.newrro-billing-theme .form-input, .newrro-billing-theme .form-select, .newrro-billing-theme .form-textarea {
+  width: 100%; padding: 11px 14px; background: var(--bg-elevated); border: 1px solid var(--border);
+  border-radius: var(--radius-sm); color: var(--text-primary); font-size: 13.5px; outline: none;
+  transition: border-color 0.2s var(--ease-out), box-shadow 0.2s var(--ease-out);
+}.newrro-billing-theme .form-input::placeholder, .newrro-billing-theme .form-textarea::placeholder { color: var(--text-muted2); }.newrro-billing-theme .form-input:focus, .newrro-billing-theme .form-select:focus, .newrro-billing-theme .form-textarea:focus { border-color: var(--accent); box-shadow: 0 0 0 4px rgba(139,92,246,0.16); }.newrro-billing-theme .form-select { appearance: none; cursor: pointer; }.newrro-billing-theme .form-textarea { resize: vertical; }.newrro-billing-theme .file-upload-area { position: relative; border: 1.5px dashed var(--border); border-radius: var(--radius-sm); padding: 22px; text-align: center; color: var(--text-muted2); transition: all 0.25s var(--ease-out); }.newrro-billing-theme .file-upload-area:hover { border-color: var(--accent); background: rgba(139,92,246,0.05); color: var(--text-secondary); }.newrro-billing-theme .file-upload-area input[type=file] { position: absolute; inset: 0; opacity: 0; cursor: pointer; }.newrro-billing-theme .file-upload-area p { font-size: 12.5px; margin-top: 8px; }/* ===================== Modals ===================== */.newrro-billing-theme .modal-overlay { position: fixed; inset: 0; z-index: 100; background: rgba(5,2,8,0.78); backdrop-filter: blur(10px); display: flex; align-items: center; justify-content: center; padding: 24px; animation: fadeIn 0.25s var(--ease-out); }@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }.newrro-billing-theme .modal { width: 100%; max-width: 600px; max-height: 90vh; overflow-y: auto; background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-lg); box-shadow: 0 40px 100px rgba(0,0,0,0.7), 0 0 60px rgba(139,92,246,0.12); animation: modalRise 0.42s var(--ease-spring); }@keyframes modalRise { from { opacity: 0; transform: translateY(26px) scale(0.96); } to { opacity: 1; transform: none; } }.newrro-billing-theme .modal-header { display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; border-bottom: 1px solid var(--border-subtle); }.newrro-billing-theme .modal-header h3 { font-size: 17px; font-weight: 700; }.newrro-billing-theme .modal-body { padding: 22px 24px; }.newrro-billing-theme .modal-footer { display: flex; justify-content: flex-end; gap: 10px; padding: 16px 24px; border-top: 1px solid var(--border-subtle); }/* ===================== Vendor cards ===================== */.newrro-billing-theme .vendor-card { background: linear-gradient(180deg, rgba(167,121,255,0.05), transparent 55%), var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); padding: 18px; cursor: pointer; transition: transform 0.35s var(--ease-spring), border-color 0.3s var(--ease-out), box-shadow 0.35s var(--ease-out); }.newrro-billing-theme .vendor-card:hover { transform: translateY(-3px); border-color: var(--border); box-shadow: 0 20px 46px rgba(20,5,40,0.6), 0 0 28px rgba(139,92,246,0.12); }.newrro-billing-theme .vendor-avatar { width: 42px; height: 42px; border-radius: 13px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 16px; }/* ===================== P&L sections ===================== */.newrro-billing-theme .pl-section { background: var(--bg-card); border: 1px solid var(--border-subtle); border-radius: var(--radius); overflow: hidden; }.newrro-billing-theme .pl-section-header { display: flex; align-items: center; justify-content: space-between; padding: 16px 20px; border-bottom: 1px solid var(--border-subtle); background: rgba(167,121,255,0.04); }.newrro-billing-theme .pl-section-header h3 { font-size: 14px; font-weight: 700; }/* ===================== Pagination ===================== */.newrro-billing-theme .pagination { display: flex; align-items: center; justify-content: space-between; padding: 14px 16px; font-size: 12.5px; color: var(--text-muted2); border-top: 1px solid var(--border-subtle); }.newrro-billing-theme .pagination-btns { display: flex; gap: 5px; }.newrro-billing-theme .page-btn { width: 32px; height: 32px; border-radius: 9px; background: var(--bg-elevated); border: 1px solid var(--border-subtle); color: var(--text-secondary); font-size: 12.5px; font-weight: 600; display: inline-flex; align-items: center; justify-content: center; transition: all 0.2s var(--ease-out); }.newrro-billing-theme .page-btn:hover:not(:disabled) { border-color: var(--accent); color: var(--text-primary); }.newrro-billing-theme .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }.newrro-billing-theme .page-btn.active { background: linear-gradient(120deg, var(--accent-dim), var(--accent)); color: #fff; border-color: transparent; box-shadow: 0 3px 14px rgba(139,92,246,0.4); }/* ===================== Empty state ===================== */.newrro-billing-theme .empty-state { text-align: center; padding: 48px 24px; color: var(--text-muted2); }.newrro-billing-theme .empty-state h3 { font-size: 16px; color: var(--text-secondary); margin: 14px 0 6px; }.newrro-billing-theme .empty-state p { font-size: 13px; }/* ===================== Misc helpers ===================== */.newrro-billing-theme .flex { display: flex; }.newrro-billing-theme .flex-center { display: flex; align-items: center; justify-content: center; }.newrro-billing-theme .flex-between { display: flex; align-items: center; justify-content: space-between; }.newrro-billing-theme .gap-8 { gap: 8px; }.newrro-billing-theme .gap-10 { gap: 10px; }.newrro-billing-theme .gap-12 { gap: 12px; }.newrro-billing-theme .mt-4 { margin-top: 4px; }.newrro-billing-theme .mt-8 { margin-top: 8px; }.newrro-billing-theme .mt-16 { margin-top: 16px; }.newrro-billing-theme .mb-16 { margin-bottom: 16px; }.newrro-billing-theme .mb-20 { margin-bottom: 20px; }.newrro-billing-theme .fw-600 { font-weight: 600; }.newrro-billing-theme .fw-700 { font-weight: 700; }.newrro-billing-theme .text-sm { font-size: 12.5px; }.newrro-billing-theme .text-green { color: var(--accent-green); }.newrro-billing-theme .text-red { color: var(--accent-red); }.newrro-billing-theme .text-purple { color: var(--accent-strong); }.newrro-billing-theme .text-cyan { color: var(--steel); }.newrro-billing-theme .text-muted { color: var(--text-muted2); }.newrro-billing-theme .amount-positive { color: var(--accent-green); font-weight: 600; }.newrro-billing-theme .amount-negative { color: var(--accent-red); font-weight: 600; }.newrro-billing-theme .amount-neutral { color: var(--text-primary); font-weight: 600; }.newrro-billing-theme .truncate { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }.newrro-billing-theme .tag, .newrro-billing-theme .gst-tag { display: inline-flex; align-items: center; padding: 2px 8px; border-radius: 6px; font-size: 10.5px; font-weight: 600; background: var(--bg-elevated); color: var(--text-secondary); border: 1px solid var(--border-subtle); }.newrro-billing-theme .recharts-cartesian-grid-horizontal line, .newrro-billing-theme .recharts-cartesian-grid-vertical line { stroke: var(--border-subtle); }.newrro-billing-theme .recharts-text { fill: var(--text-secondary); }/* ============================================================
+   LOGIN — wave hero
+   ============================================================ */.newrro-billing-theme .login-page { min-height: 100vh; display: flex; flex-direction: column; position: relative; z-index: 1; overflow: hidden; }/* the uploaded wave fills the hero, brightest at centre */.newrro-billing-theme .login-bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  background:
+    radial-gradient(42% 40% at 50% 50%, rgba(139,92,246,0.28), transparent 70%),
+    url('/wave-bg.png');
+  background-repeat: no-repeat, no-repeat;
+  background-position: center, center;
+  background-size: cover, cover;
+  filter: saturate(122%);
+  animation: heroWave 18s ease-in-out infinite alternate;
+}.newrro-billing-theme .login-bg::after { content: ''; position: absolute; inset: 0; background: radial-gradient(75% 80% at 50% 50%, transparent 32%, var(--bg-base) 90%); }@keyframes heroWave { 0% { transform: scale(1.03); } 100% { transform: scale(1.1) translateY(-1.5%); } }.newrro-billing-theme .login-nav { position: relative; z-index: 3; display: flex; align-items: center; justify-content: space-between; padding: 26px 48px; }.newrro-billing-theme .login-brand { display: flex; align-items: center; gap: 9px; font-weight: 800; font-size: 16px; letter-spacing: -0.03em; font-family: var(--font-display); }.newrro-billing-theme .login-brand-mark { width: 22px; height: 22px; border-radius: 7px; background: radial-gradient(circle at 35% 30%, var(--accent-bright), var(--accent) 55%, var(--accent-dim)); box-shadow: 0 0 20px rgba(139,92,246,0.8), inset 0 1px 1px rgba(255,255,255,0.4); }.newrro-billing-theme .login-nav-links { display: flex; align-items: center; gap: 30px; }.newrro-billing-theme .login-nav-links a { color: var(--text-secondary); font-size: 13.5px; font-weight: 500; text-decoration: none; transition: color 0.2s var(--ease-out); }.newrro-billing-theme .login-nav-links a:hover { color: var(--text-primary); }.newrro-billing-theme .login-hero { position: relative; z-index: 2; flex: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; align-items: center; gap: 40px; padding: 10px 48px 30px; max-width: 1280px; margin: 0 auto; width: 100%; }.newrro-billing-theme .login-hero-copy { max-width: 540px; animation: blockRise 0.7s var(--ease-spring) both; }.newrro-billing-theme .login-eyebrow { display: inline-flex; align-items: center; gap: 8px; font-size: 12px; font-weight: 600; letter-spacing: 0.04em; color: var(--accent-strong); padding: 6px 13px; border-radius: var(--pill); border: 1px solid rgba(139,92,246,0.34); background: rgba(139,92,246,0.1); margin-bottom: 22px; }.newrro-billing-theme .login-hero h1 { font-size: clamp(38px, 5vw, 60px); font-weight: 800; line-height: 1.02; letter-spacing: -0.045em; font-family: var(--font-display); }.newrro-billing-theme .login-hero h1 .grad { background: linear-gradient(120deg, var(--accent-bright), var(--magenta) 75%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; }.newrro-billing-theme .login-hero-sub { color: var(--text-secondary); font-size: 15px; line-height: 1.6; margin: 22px 0 0; max-width: 440px; }.newrro-billing-theme .login-trusted { position: relative; z-index: 2; display: flex; align-items: center; gap: 26px; padding: 22px 48px 30px; max-width: 1280px; margin: 0 auto; width: 100%; border-top: 1px solid var(--border-subtle); flex-wrap: wrap; }.newrro-billing-theme .login-trusted span { font-size: 12.5px; color: var(--text-muted2); }.newrro-billing-theme .login-trusted-marks { display: flex; align-items: center; gap: 24px; opacity: 0.6; }.newrro-billing-theme .login-trusted-marks div { font-weight: 700; font-size: 14px; letter-spacing: 0.02em; color: var(--text-secondary); }.newrro-billing-theme .login-card { position: relative; z-index: 2; background: linear-gradient(180deg, rgba(167,121,255,0.1), rgba(167,121,255,0.02)); border: 1px solid var(--border); border-radius: var(--radius-lg); padding: 30px 30px 26px; backdrop-filter: blur(24px); box-shadow: 0 40px 90px rgba(0,0,0,0.6), 0 0 60px rgba(139,92,246,0.18); width: 100%; max-width: 400px; justify-self: end; animation: blockRise 0.8s var(--ease-spring) both; animation-delay: 0.1s; }.newrro-billing-theme .login-card .login-logo { text-align: left; margin-bottom: 22px; }.newrro-billing-theme .login-card .login-logo h1 { font-size: 21px; font-weight: 800; letter-spacing: -0.03em; font-family: var(--font-display); }.newrro-billing-theme .login-card .login-logo p { color: var(--text-muted2); font-size: 12.5px; margin-top: 4px; }.newrro-billing-theme .login-error { background: rgba(255,111,139,0.12); border: 1px solid rgba(255,111,139,0.35); color: var(--accent-red); border-radius: var(--radius-sm); padding: 10px 14px; font-size: 12.5px; margin-bottom: 16px; }@media (max-width: 920px) {
+  .login-hero { grid-template-columns: 1fr; padding-top: 24px; }
+  .login-card { justify-self: start; max-width: 440px; }
+  .login-nav { padding: 22px 28px; }
+  .login-hero, .login-trusted { padding-left: 28px; padding-right: 28px; }
+  .login-nav-links { display: none; }
+}@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; }
+}

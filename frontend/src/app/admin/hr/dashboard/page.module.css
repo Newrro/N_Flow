@@ -1,0 +1,212 @@
+.container {
+  padding: var(--space-6);
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--color-gray-500);
+  margin-top: var(--space-1);
+  font-size: var(--font-size-base);
+}
+
+.loadingContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--space-4);
+  color: var(--color-gray-500);
+}
+
+.errorContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 400px;
+  gap: var(--space-4);
+}
+
+.errorText {
+  color: var(--color-danger-500);
+  font-weight: var(--font-weight-medium);
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+@media (max-width: 1200px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Warnings Card */
+.warningsCard {
+  background-color: rgba(245, 158, 11, 0.08);
+  border: 2px solid rgba(245, 158, 11, 0.25);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.warningsTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--status-warning);
+  margin: 0 0 var(--space-3) 0;
+}
+
+.warningsList {
+  margin: 0;
+  padding-left: var(--space-5);
+  color: var(--status-warning);
+}
+
+.warningsList li {
+  margin-bottom: var(--space-2);
+}
+
+.warningDanger {
+  color: var(--color-danger-600);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Success Card */
+.successCard {
+  background-color: var(--color-success-50);
+  border: 2px solid var(--color-success-300);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-6);
+}
+
+.successTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-success-700);
+  margin: 0 0 var(--space-2) 0;
+}
+
+.successCard p {
+  margin: 0;
+  color: var(--color-success-600);
+}
+
+/* Section */
+.section {
+  margin-bottom: var(--space-8);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-800);
+  margin: 0 0 var(--space-4) 0;
+}
+
+/* Actions Grid */
+.actionsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+}
+
+.actionButton {
+  min-width: 180px;
+  justify-content: center;
+}
+
+/* Finance Grid */
+.financeGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 1200px) {
+  .financeGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .financeGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Changes Table */
+.changesTable {
+  background-color: var(--surface-1);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--surface-border);
+  overflow: hidden;
+}
+
+.changesTable table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.changesTable th,
+.changesTable td {
+  padding: var(--space-3) var(--space-4);
+  text-align: left;
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.changesTable th {
+  background-color: var(--color-gray-50);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-700);
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.changesTable td {
+  color: var(--color-gray-700);
+  font-size: var(--font-size-sm);
+}
+
+.changesTable tbody tr:hover {
+  background-color: var(--color-gray-50);
+}
+
+.changesTable tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.noData {
+  color: var(--color-gray-500);
+  font-style: italic;
+  padding: var(--space-4);
+  background-color: var(--color-gray-50);
+  border-radius: var(--radius-md);
+  text-align: center;
+}

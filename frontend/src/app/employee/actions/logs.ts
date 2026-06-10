@@ -33,9 +33,20 @@ export async function submitWorkLog(formData: {
 
   if (error) throw error;
 
+  // 2. Mark the corresponding task as completed
+  const { error: taskError } = await supabase
+    .from('tasks')
+    .update({ status: 'completed' })
+    .eq('id', formData.task_id);
+
+  if (taskError) {
+    console.error('Error marking task as completed upon log submission:', taskError);
+  }
+
   revalidatePath('/employee/dashboard');
   revalidatePath('/employee/tasks');
   revalidatePath('/admin/tasks');
+  revalidatePath('/admin/dashboard');
   revalidatePath('/admin/analytics');
   
   return { success: true, logId: log.id };
@@ -50,7 +61,7 @@ export async function getAssignedTasks() {
 
   const { data, error } = await supabase
     .from('tasks')
-    .select('*')
+    .select('*, project:project_id(id, name)')
     .eq('assigned_to', user.id)
     .neq('status', 'completed');
 
@@ -74,6 +85,10 @@ export async function getMyTasks() {
       profiles:assigned_to (
         name,
         employee_id
+      ),
+      project:project_id (
+        id,
+        name
       )
     `
     )

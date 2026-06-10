@@ -1,0 +1,22 @@
+.container {
+  padding: var(--space-6);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--color-gray-500);
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+}

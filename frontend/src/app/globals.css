@@ -48,6 +48,97 @@
   --radius-lg: 1rem;
   --radius-xl: 1.25rem;
   --radius-2xl: 1.5rem;
+
+  /* === Missing HR Design Tokens === */
+  --text-xs: 0.75rem;
+  --text-sm: 0.875rem;
+  --text-base: 1rem;
+  --text-lg: 1.125rem;
+  --text-xl: 1.25rem;
+  --text-2xl: 1.5rem;
+  --text-3xl: 1.875rem;
+  --text-4xl: 2.25rem;
+
+  /* Font size mappings for HR portal page components */
+  --font-size-xs: var(--text-xs);
+  --font-size-sm: var(--text-sm);
+  --font-size-base: var(--text-base);
+  --font-size-lg: var(--text-lg);
+  --font-size-xl: var(--text-xl);
+  --font-size-2xl: var(--text-2xl);
+  --font-size-3xl: var(--text-3xl);
+  --font-size-4xl: var(--text-4xl);
+
+  --font-normal: 400;
+  --font-medium: 500;
+  --font-semibold: 600;
+  --font-bold: 700;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+  --space-16: 4rem;
+
+  --transition-fast: 150ms ease;
+  --transition-base: 200ms ease;
+  --transition-slow: 300ms ease;
+
+  --sidebar-width: 260px;
+  --sidebar-collapsed-width: 72px;
+  --header-height: 64px;
+  --max-content-width: 1280px;
+
+  /* === Legacy Light Theme mappings for HR section === */
+  --color-gray-50: var(--surface-2);
+  --color-gray-100: var(--surface-3);
+  --color-gray-200: var(--surface-border);
+  --color-gray-300: rgba(255, 255, 255, 0.15);
+  --color-gray-400: var(--foreground-subtle);
+  --color-gray-500: var(--foreground-muted);
+  --color-gray-600: var(--foreground-muted);
+  --color-gray-700: var(--foreground);
+  --color-gray-800: var(--foreground);
+  --color-gray-900: var(--foreground);
+  
+  --color-primary-50: var(--brand-primary-dim);
+  --color-primary-100: var(--brand-primary-dim);
+  --color-primary-200: rgba(99, 102, 241, 0.3);
+  --color-primary-500: var(--brand-primary);
+  --color-primary-600: var(--brand-primary);
+  --color-primary-700: #A5B4FC;
+  
+  --color-success-50: rgba(16, 185, 129, 0.08);
+  --color-success-100: rgba(16, 185, 129, 0.15);
+  --color-success-300: rgba(16, 185, 129, 0.3);
+  --color-success-500: var(--status-success);
+  --color-success-600: var(--status-success);
+  --color-success-700: #34D399;
+  
+  --color-warning-50: rgba(245, 158, 11, 0.08);
+  --color-warning-100: rgba(245, 158, 11, 0.15);
+  --color-warning-300: rgba(245, 158, 11, 0.30);
+  --color-warning-500: var(--status-warning);
+  --color-warning-600: var(--status-warning);
+  --color-warning-700: #FBBF24;
+  
+  --color-danger-50: rgba(239, 68, 68, 0.08);
+  --color-danger-100: rgba(239, 68, 68, 0.15);
+  --color-danger-300: rgba(239, 68, 68, 0.30);
+  --color-danger-500: var(--status-danger);
+  --color-danger-600: var(--status-danger);
+  --color-danger-700: #F87171;
+  
+  --color-purple-50: rgba(167, 139, 250, 0.08);
+  --color-purple-100: rgba(167, 139, 250, 0.15);
+  --color-purple-500: var(--brand-accent);
+  --color-purple-600: var(--brand-accent);
+  --color-purple-700: #C084FC;
 }
 
 @theme inline {
@@ -375,4 +466,137 @@ body {
   background: var(--brand-primary-dim);
   color: #A5B4FC;
   font-weight: 600;
+}
+/* ===== MOBILE / CAPACITOR SCALING ===== */
+
+/* Safe area support for notch/rounded corners on iOS and Android */
+html {
+  height: 100%;
+  height: -webkit-fill-available;
+}
+
+body {
+  min-height: 100%;
+  min-height: -webkit-fill-available;
+  /* Prevent text size inflation on orientation change */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  /* Smooth touch scrolling */
+  -webkit-overflow-scrolling: touch;
+  /* Prevent callout on long-press */
+  -webkit-touch-callout: none;
+  touch-action: pan-y;
+}
+
+/* Safe area padding for notch/status bar */
+.safe-area-main {
+  padding-top: env(safe-area-inset-top);
+  padding-bottom: env(safe-area-inset-bottom);
+  padding-left: env(safe-area-inset-left);
+  padding-right: env(safe-area-inset-right);
+}
+
+/* Mobile-specific: make sidebar tappable (bigger hit targets) */
+@media (max-width: 768px) {
+  /* Stack layout on small screens */
+  .dashboard-layout {
+    flex-direction: column !important;
+  }
+
+  /* Bottom nav on mobile instead of side nav */
+  .sidebar-mobile {
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    top: auto !important;
+    width: 100% !important;
+    height: auto !important;
+    flex-direction: row !important;
+    justify-content: space-around !important;
+    padding: 8px 0 !important;
+    padding-bottom: calc(8px + env(safe-area-inset-bottom)) !important;
+    border-top: 1px solid var(--surface-border) !important;
+    border-right: none !important;
+    z-index: 100;
+  }
+
+  /* Content area gets bottom padding so it's not hidden behind nav */
+  .mobile-content-area {
+    padding-bottom: calc(80px + env(safe-area-inset-bottom)) !important;
+  }
+
+  /* Bigger touch targets */
+  .sidebar-mobile a,
+  .sidebar-mobile button {
+    min-height: 44px !important;
+    min-width: 44px !important;
+  }
+
+  /* Login page: stack the two-column layout */
+  .login-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hide the left branding panel on mobile to save space */
+  .login-brand-panel {
+    display: none !important;
+  }
+
+  /* Full width login form on mobile */
+  .login-form-panel {
+    border-left: none !important;
+    padding: 2rem 1.5rem !important;
+  }
+
+  /* Topbar adjustments */
+  .topbar-title {
+    display: none;
+  }
+
+  /* Tables: horizontal scroll on mobile */
+  .dark-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Cards: reduce padding */
+  .dark-card {
+    padding: 1rem !important;
+  }
+
+  /* Modals: full screen on mobile */
+  .modal-container {
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 !important;
+    border-radius: 1rem 1rem 0 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-height: 90vh !important;
+    overflow-y: auto !important;
+  }
+
+  /* Font size adjustments */
+  h1 { font-size: 1.5rem !important; }
+  h2 { font-size: 1.25rem !important; }
+  h3 { font-size: 1rem !important; }
+}
+
+/* Capacitor-specific: hide elements that don't make sense in native app */
+.capacitor-app .pwa-install-button {
+  display: none !important;
+}
+
+/* Prevent double-tap zoom on buttons and links */
+a, button, input, select, textarea {
+  touch-action: manipulation;
+}
+
+/* Smooth scrolling everywhere */
+* {
+  scroll-behavior: smooth;
 }

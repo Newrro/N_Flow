@@ -88,7 +88,7 @@ export const AttendanceTable = ({ profiles, attendance, leaves, dateStr }: Atten
                 <td className="px-6 py-4">
                   <p className="text-[10px] font-medium text-[var(--foreground-muted)] italic">
                     {status === 'absent' && "Deployment Void: Identity Offline."}
-                    {status === 'present' && "Operational presence confirmed."}
+                    {status === 'present' && (currentStatus?.remarks ? `WFH: ${currentStatus.remarks}` : "Operational presence confirmed.")}
                     {status === 'leave' && "Authorized Offline Protocol."}
                   </p>
                 </td>

@@ -1,0 +1,124 @@
+.container {
+  padding: var(--space-6);
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.header {
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--color-gray-500);
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-8);
+}
+
+.section {
+  background-color: var(--surface-1);
+  border: 1px solid var(--surface-border);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-800);
+  margin: 0 0 var(--space-4) 0;
+  padding-bottom: var(--space-3);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.inlineField {
+  margin-top: var(--space-4);
+}
+
+/* CTC Section */
+.ctcSection {
+  margin-top: var(--space-4);
+}
+
+.checkboxLabel {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  cursor: pointer;
+  color: var(--color-danger-600);
+  font-weight: var(--font-weight-semibold);
+}
+
+.checkboxLabel input {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-danger-500);
+}
+
+.ctcFields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-4);
+  margin-top: var(--space-4);
+}
+
+@media (max-width: 640px) {
+  .ctcFields {
+    grid-template-columns: 1fr;
+  }
+}
+
+.monthlyGross {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.monthlyGross label {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-gray-700);
+}
+
+.monthlyGross p {
+  padding: var(--space-3);
+  background-color: var(--color-gray-100);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-700);
+  margin: 0;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: var(--space-3);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-gray-200);
+}

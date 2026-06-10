@@ -112,11 +112,12 @@ export async function updateUser(userId: string, data: {
     if (authError) throw authError
   }
 
-  // 3. Update Profile (Name, Employee ID, Role)
+  // 3. Update Profile (Name, Employee ID, Role, Email)
   const updateData: any = {}
   if (data.name) updateData.name = data.name
   if (data.employee_id) updateData.employee_id = data.employee_id
   if (data.role) updateData.role = data.role
+  if (data.email) updateData.email = data.email
 
   if (Object.keys(updateData).length > 0) {
     const { error: profileError } = await adminClient

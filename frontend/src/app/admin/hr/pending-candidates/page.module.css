@@ -1,0 +1,180 @@
+.container {
+  padding: var(--space-6);
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-6);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-gray-900);
+  margin: 0;
+}
+
+.subtitle {
+  color: var(--color-gray-500);
+  margin-top: var(--space-1);
+  font-size: var(--font-size-sm);
+}
+
+.toolbar {
+  display: flex;
+  gap: var(--space-4);
+  margin-bottom: var(--space-4);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.searchInput {
+  flex: 1;
+  min-width: 250px;
+  max-width: 400px;
+}
+
+.actionBar {
+  display: flex;
+  gap: var(--space-2);
+  flex-wrap: wrap;
+}
+
+.candidateCell {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.candidateName {
+  font-weight: var(--font-weight-medium);
+}
+
+.actionButtons {
+  display: flex;
+  gap: var(--space-1);
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: var(--space-12);
+  color: var(--color-gray-500);
+}
+
+.emptyState h3 {
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-2);
+}
+
+.emptyState p {
+  margin-bottom: var(--space-4);
+}
+
+/* Accept Modal */
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.formSection {
+  border: 1px solid var(--color-gray-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.formSectionTitle {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-gray-700);
+  margin-bottom: var(--space-3);
+  padding-bottom: var(--space-2);
+  border-bottom: 1px solid var(--color-gray-200);
+}
+
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-3);
+}
+
+.formGrid > div {
+  min-width: 0;
+}
+
+.fullWidth {
+  grid-column: 1 / -1;
+}
+
+/* Info Box */
+.infoBox {
+  background-color: var(--color-primary-50);
+  border: 1px solid var(--color-primary-200);
+  border-radius: var(--radius-md);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.infoBox h4 {
+  color: var(--color-primary-800);
+  margin-bottom: var(--space-2);
+}
+
+.infoRow {
+  display: flex;
+  justify-content: space-between;
+  padding: var(--space-1) 0;
+}
+
+.infoLabel {
+  color: var(--color-gray-600);
+}
+
+.infoValue {
+  font-weight: var(--font-weight-medium);
+}
+
+/* Warning Text */
+.warningText {
+  color: var(--color-danger-600);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-2);
+}
+
+/* Selection Info */
+.selectionInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  background-color: var(--color-primary-50);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+  padding: 0 var(--space-2);
+  background-color: var(--color-primary-600);
+  color: white;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .formGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
