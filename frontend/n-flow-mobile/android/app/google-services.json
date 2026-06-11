@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "770459384343",
+    "project_id": "n-flow-14cd8",
+    "storage_bucket": "n-flow-14cd8.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:770459384343:android:bcd624f533c6f3eb297a52",
+        "android_client_info": {
+          "package_name": "com.newrro.nflow"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDy6C2casnQ0y5RDnb-YbWBwojQDM6qa34"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

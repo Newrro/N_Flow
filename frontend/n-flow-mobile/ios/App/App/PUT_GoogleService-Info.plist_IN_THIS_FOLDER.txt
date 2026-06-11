@@ -1,0 +1,18 @@
+================================================================
+  iOS FIREBASE FILE GOES HERE
+================================================================
+
+Download "GoogleService-Info.plist" from your Firebase project
+(the iOS app you register) and add it to THIS folder:
+
+    ios/App/App/GoogleService-Info.plist
+
+IMPORTANT: Don't just copy it on disk — in Xcode, drag it into
+the "App" target in the left sidebar and tick "Copy items if
+needed" so Xcode actually bundles it. Otherwise the app won't
+find it at runtime.
+
+You can delete this .txt file after you add the real one.
+
+Full step-by-step is in:  ios/IOS_SETUP.md
+================================================================
